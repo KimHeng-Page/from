@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Application Form</title>
+    <link rel="icon" type="image/png" href="LOGO UPDATE .png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Khmer OS Siemreap', sans-serif;
+            background-color: #f3f4f6;
+        }
+        input, textarea, select {
+            border: 1px solid #d1d5db;
+        }
+        
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            color: white;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+        }
+        .message-box.success {
+            background-color: #10b981;
+        }
+        .message-box.reset {
+            background-color: #f59e0b;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="message-container"></div>
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-xl space-y-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">EMPLOYMENT APPLICATION FORM</h1>
+        <form id="applicationForm" class="space-y-6">
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2 ">Application Details</legend>
+                <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+                    <div class="flex-1">
+                        <label for="position" class="block text-sm font-medium text-gray-700">Position applying for:</label>
+                        <input type="text" id="position" name="position" required
+                               class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div class="flex-1">
+                        <label for="salary" class="block text-sm font-medium text-gray-700">Expected Salary:</label>
+                        <input type="text" id="salary" name="salary" required
+                               class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                </div>
+            </fieldset>
+
+           
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">1. PERSONAL DATA</legend>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label for="familyName" class="block text-sm font-medium text-gray-700">Family Name:</label>
+                        <input type="text" id="familyName" name="familyName" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div class="flex flex-col justify-end">
+                        <label class="block text-sm font-medium text-gray-700">Sex:</label>
+                        <div class="mt-1 flex items-center space-x-4">
+                            <label><input type="checkbox" name="sex" value="male"> Male</label>
+                            <label><input type="checkbox" name="sex" value="female"> Female</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="height" class="block text-sm font-medium text-gray-700">Height:</label>
+                        <input type="text" id="height" name="height" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label for="birthDate" class="block text-sm font-medium text-gray-700">Date of Birth:</label>
+                        <input type="text" id="birthDate" name="birthDate" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label for="birthPlace" class="block text-sm font-medium text-gray-700">Place of Birth:</label>
+                        <input type="text" id="birthPlace" name="birthPlace" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label for="nationality" class="block text-sm font-medium text-gray-700">Nationality:</label>
+                        <input type="text" id="nationality" name="nationality" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label for="idCard" class="block text-sm font-medium text-gray-700">ID Card N°:</label>
+                        <input type="text" id="idCard" name="idCard" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
+                        <label for="passport" class="block text-sm font-medium text-gray-700">Passport N°:</label>
+                        <input type="text" id="passport" name="passport" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                    </div>
+                    <div class="col-span-1 md:col-span-2 flex items-center space-x-4">
+                        <label class="block text-sm font-medium text-gray-700">Marital status:</label>
+                        <label><input type="checkbox" name="maritalStatus" value="single"> Single</label>
+                        <label><input type="checkbox" name="maritalStatus" value="married"> Married</label>
+                    </div>
+                </div>
+
+                
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="presentAddress" class="block text-sm font-medium text-gray-700">Present Address:</label>
+                        <textarea id="presentAddress" name="presentAddress" rows="4" class="mt-1 block w-full rounded-md shadow-sm p-2"></textarea>
+                        <div class="mt-2 space-y-2">
+                            <div>
+                                <label for="presentPhone" class="block text-sm font-medium text-gray-700">Telephone No:</label>
+                                <input type="text" id="presentPhone" name="presentPhone" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                            </div>
+                            <div>
+                                <label for="presentEmail" class="block text-sm font-medium text-gray-700">Email Address:</label>
+                                <input type="text" id="presentEmail" name="presentEmail" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="permanentAddress" class="block text-sm font-medium text-gray-700">Permanent Address (For Overseas Employees Only):</label>
+                        <textarea id="permanentAddress" name="permanentAddress" rows="4" class="mt-1 block w-full rounded-md shadow-sm p-2"></textarea>
+                        <div class="mt-2 space-y-2">
+                            <div>
+                                <label for="permanentPhone" class="block text-sm font-medium text-gray-700">Telephone No:</label>
+                                <input type="text" id="permanentPhone" name="permanentPhone" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                            </div>
+                            <div>
+                                <label for="permanentEmail" class="block text-sm font-medium text-gray-700">Email Address:</label>
+                                <input type="text" id="permanentEmail" name="permanentEmail" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+           
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">Family Member Information</legend>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2 border border-gray-400 font-medium">Name</th>
+                                <th class="p-2 border border-gray-400 font-medium">Relationship</th>
+                                <th class="p-2 border border-gray-400 font-medium">Business Position</th>
+                                <th class="p-2 border border-gray-400 font-medium">Telephone No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+               
+                <div class="mt-6">
+                    <p class=" text-lg text-gray-600">In case of emergency contact:</p>
+                    <div class="overflow-x-auto mt-2">
+                        <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-2 border border-gray-400 font-medium">Name</th>
+                                    <th class="p-2 border border-gray-400 font-medium">Relationship</th>
+                                    <th class="p-2 border border-gray-400 font-medium">Business Position</th>
+                                    <th class="p-2 border border-gray-400 font-medium">Telephone No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+            
+         
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">2. GENERAL EDUCATION</legend>
+                <div class="overflow-x-auto mt-2">
+                    <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2 border border-gray-400 font-medium">Name (Universities or Equivalent)</th>
+                                <th class="p-2 border border-gray-400 font-medium">From (Month/Year)</th>
+                                <th class="p-2 border border-gray-400 font-medium">To (Month/Year)</th>
+                                <th class="p-2 border border-gray-400 font-medium">Degrees obtained</th>
+                                <th class="p-2 border border-gray-400 font-medium">Major of study</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                
+                <div class="mt-6">
+                    <p class=" text-lg text-gray-600">Formal Training or Short Courses:</p>
+                    <div class="overflow-x-auto mt-2">
+                        <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="p-2 border border-gray-400 font-medium">Name of institution</th>
+                                    <th class="p-2 border border-gray-400 font-medium">Type of subjects</th>
+                                    <th class="p-2 border border-gray-400 font-medium">From (Month/Year)</th>
+                                    <th class="p-2 border border-gray-400 font-medium">To (Month/Year)</th>
+                                    <th class="p-2 border border-gray-400 font-medium">Certificates or Diplomas obtained</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                    <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+
+           
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">3. FOREIGN LANGUAGES</legend>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th rowspan="2" class="p-2 border border-gray-400 text-center align-middle">Language</th>
+                                <th colspan="3" class="p-2 border border-gray-400 text-center">Read</th>
+                                <th colspan="3" class="p-2 border border-gray-400 text-center">Write</th>
+                                <th colspan="3" class="p-2 border border-gray-400 text-center">Speak</th>
+                                <th colspan="3" class="p-2 border border-gray-400 text-center">Listen</th>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <th class="p-2 border border-gray-400 text-center">Poor</th>
+                                <th class="p-2 border border-gray-400 text-center">Fair</th>
+                                <th class="p-2 border border-gray-400 text-center">Good</th>
+                                <th class="p-2 border border-gray-400 text-center">Poor</th>
+                                <th class="p-2 border border-gray-400 text-center">Fair</th>
+                                <th class="p-2 border border-gray-400 text-center">Good</th>
+                                <th class="p-2 border border-gray-400 text-center">Poor</th>
+                                <th class="p-2 border border-gray-400 text-center">Fair</th>
+                                <th class="p-2 border border-gray-400 text-center">Good</th>
+                                <th class="p-2 border border-gray-400 text-center">Poor</th>
+                                <th class="p-2 border border-gray-400 text-center">Fair</th>
+                                <th class="p-2 border border-gray-400 text-center">Good</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-400">Khmer</td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400">English</td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400">Other</td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                                <td class="p-2 border border-gray-400 text-center"><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+
+          
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">4. EMPLOYMENT HISTORY</legend>
+                <p class="text-sm text-gray-700 mt-2">Starting with your present post, list in reverse order every employment you have had.</p>
+                <div class="overflow-x-auto mt-4">
+                    <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2 border border-gray-400">From</th>
+                                <th class="p-2 border border-gray-400">To</th>
+                                <th colspan="2" class="p-2 border border-gray-400 text-center">Monthly Basic Salary (U.S. Dollar)</th>
+                                <th class="p-2 border border-gray-400">Other Benefits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-100">
+                                <td class="p-2 border border-gray-400">Month/Year</td>
+                                <td class="p-2 border border-gray-400">Month/Year</td>
+                                <td class="p-2 border border-gray-400">Starting</td>
+                                <td class="p-2 border border-gray-400">Ending</td>
+                                <td rowspan="2" class="p-2 border border-gray-400"><textarea class="w-full h-full p-2"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="p-2 border border-gray-400">
+                                    <label for="companyName" class="block text-sm font-medium text-gray-700">Company/Organization Name:</label>
+                                    <input type="text" id="companyName" name="companyName" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="p-2 border border-gray-400">
+                                    <label for="employerAddress" class="block text-sm font-medium text-gray-700">Address of employer:</label>
+                                    <textarea id="employerAddress" name="employerAddress" rows="4" class="mt-1 block w-full rounded-md shadow-sm p-2"></textarea>
+                                </td>
+                                <td colspan="2" class="p-2 border border-gray-400">
+                                    <label for="supervisorName" class="block text-sm font-medium text-gray-700">Name of supervisor:</label>
+                                    <input type="text" id="supervisorName" name="supervisorName" class="mt-1 block w-full rounded-md shadow-sm p-2">
+                                    <label for="leavingReason" class="block text-sm font-medium text-gray-700 mt-4">Reasons for leaving:</label>
+                                    <textarea id="leavingReason" name="leavingReason" rows="4" class="mt-1 block w-full rounded-md shadow-sm p-2"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="p-2 border border-gray-400">
+                                    <label for="duties" class="block text-sm font-medium text-gray-700">Description of your duties:</label>
+                                    <textarea id="duties" name="duties" rows="4" class="mt-1 block w-full rounded-md shadow-sm p-2"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+
+           
+            <fieldset class="border border-gray-300 p-4 rounded-lg">
+                <legend class="text-gray-600 px-2  text-lg">5. REFERENCES</legend>
+                <div class="overflow-x-auto mt-2">
+                    <table class="w-full text-left table-auto border-collapse border border-gray-400 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2 border border-gray-400">Full name</th>
+                                <th class="p-2 border border-gray-400">Address and contact number</th>
+                                <th class="p-2 border border-gray-400">Occupation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                                <td class="p-2 border border-gray-400"><input type="text" class="w-full"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+
+         
+            <div class="flex justify-end space-x-4 mt-6">
+                <button type="submit"
+                        class="px-6 py-3 bg-blue-500 text-white  shadow-lg hover:bg-blue-600 transition duration-300">
+                    Submit
+                </button>
+                <button type="reset"
+                        class="px-6 py-3 bg-red-500 text-white  shadow-lg hover:bg-red-600 transition duration-300">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+       
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            const messageBox = document.createElement('div');
+            messageBox.className = `message-box ${type}`;
+            messageBox.textContent = message;
+            messageContainer.appendChild(messageBox);
+
+           
+            setTimeout(() => {
+                messageBox.classList.add('show');
+            }, 10);
+
+           
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+                setTimeout(() => {
+                    messageBox.remove();
+                }, 300); 
+            }, 3000);
+        }
+
+        document.getElementById('applicationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            showMessage('Your form has been submitted to the system. Thank you! 📨', 'success');
+        });
+
+        document.getElementById('applicationForm').addEventListener('reset', function(event) {
+            showMessage('The form has been reset. Thank you! 🙏🏻', 'reset');
+        });
+    </script>
+</body>
+</html>
